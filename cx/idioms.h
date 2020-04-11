@@ -3,8 +3,6 @@
 #include "cx/common.h"
 #include "cx/templates.h"
 
-#define COMMA ,
-
 #define DEFINE_MEMBER_FUNCTION_DETECTOR(detector, func)\
 template<typename = void, typename...>\
 struct _##detector##MemberFunctionExists : CX::false_type {\
@@ -103,7 +101,9 @@ namespace CX {
  DEFINE_BINARY_OPERATOR_DETECTOR(XORAssign, &=)
  DEFINE_BINARY_OPERATOR_DETECTOR(LShiftAssign, <<=)
  DEFINE_BINARY_OPERATOR_DETECTOR(RShiftAssign, >>=)
+#define COMMA ,
  DEFINE_BINARY_OPERATOR_DETECTOR(Comma, COMMA)
+#undef COMMA
 
  DEFINE_LHS_UNARY_OPERATOR_DETECTOR(Compl, ~)
  DEFINE_LHS_UNARY_OPERATOR_DETECTOR(Incr, ++)
