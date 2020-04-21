@@ -161,6 +161,8 @@ namespace CX {
    return selector_t::safe_va_arg<T>(list);
   } else if (CX::IsSame<T, long long>::value) {
    return (T)selector_t::safe_va_arg<long long>(list);
+  } else if (CX::IsSame<T, long>::value) {
+   return (T)selector_t::safe_va_arg<long>(list);
   } else if constexpr (t_size > sizeof(double)) {
    return (T)selector_t::safe_va_arg<long double>(list);
   } else if constexpr(t_size > sizeof(int)) {
